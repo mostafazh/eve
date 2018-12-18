@@ -257,6 +257,11 @@ RATE_LIMIT_POST = None
 RATE_LIMIT_PATCH = None
 RATE_LIMIT_DELETE = None
 
+RATE_LIMIT_UNAUTH_GET = RATE_LIMIT_GET
+RATE_LIMIT_UNAUTH_POST = RATE_LIMIT_POST
+RATE_LIMIT_UNAUTH_PATCH = RATE_LIMIT_PATCH
+RATE_LIMIT_UNAUTH_DELETE = RATE_LIMIT_DELETE
+
 # disallow Mongo's javascript queries as they might be vulnerable to injection
 # attacks ('ReDoS' especially), are probably too complex for the average API
 # end-user and finally can  seriously impact overall performance.

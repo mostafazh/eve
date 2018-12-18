@@ -54,6 +54,11 @@ class TestConfig(TestBase):
         self.assertEqual(self.app.config["RATE_LIMIT_PATCH"], None)
         self.assertEqual(self.app.config["RATE_LIMIT_DELETE"], None)
 
+        self.assertEqual(self.app.config["RATE_LIMIT_UNAUTH_GET"], None)
+        self.assertEqual(self.app.config["RATE_LIMIT_UNAUTH_POST"], None)
+        self.assertEqual(self.app.config["RATE_LIMIT_UNAUTH_PATCH"], None)
+        self.assertEqual(self.app.config["RATE_LIMIT_UNAUTH_DELETE"], None)
+
         self.assertEqual(self.app.config["MONGO_HOST"], "localhost")
         self.assertEqual(self.app.config["MONGO_PORT"], 27017)
         self.assertEqual(self.app.config["MONGO_QUERY_BLACKLIST"], ["$where", "$regex"])

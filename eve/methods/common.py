@@ -295,17 +295,18 @@ def ratelimit():
     def decorator(f):
         @wraps(f)
         def rate_limited(*args, **kwargs):
-            method_limit = app.config.get("RATE_LIMIT_" + request.method)
+            # If authorization is being used the key is 'username'.
+            # Else, fallback to client IP.
+            if request.authorization:
+                method_limit = app.config.get("RATE_LIMIT_" + request.method)
+                key = "rate-limit/%s" % request.authorization.username
+            else:
+                method_limit = app.config.get("RATE_LIMIT_UNAUTH_" + request.method)
+                key = "rate-limit/%s" % request.remote_addr
+
             if method_limit and app.redis:
                 limit = method_limit[0]
                 period = method_limit[1]
-                # If authorization is being used the key is 'username'.
-                # Else, fallback to client IP.
-                key = "rate-limit/%s" % (
-                    request.authorization.username
-                    if request.authorization
-                    else request.remote_addr
-                )
                 rlimit = RateLimit(key, limit, period, True)
                 if rlimit.over_limit:
                     return Response("Rate limit exceeded", 429)

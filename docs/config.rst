@@ -444,6 +444,38 @@ uppercase.
                                     a limit of 300 requests every 15 minutes. Defaults to
                                     ``None``.
 
+``RATE_LIMIT_UNAUTH_GET``           A tuple expressing the rate limit on GET
+                                    requests for unauthenticated users (by client IP).
+                                    The first element of the tuple is the number
+                                    of requests allowed, while the second is the time
+                                    window in seconds. For example, ``(300, 60 * 1)``
+                                    would set a limit of 300 requests every 15 minutes.
+                                    Defaults to the value of ``RATE_LIMIT_GET``.
+
+``RATE_LIMIT_UNAUTH_POST``          A tuple expressing the rate limit on POST
+                                    requests for unauthenticated users (by client IP).
+                                    The first element of the tuple is the number
+                                    of requests allowed, while the second is the time
+                                    window in seconds. For example ``(300, 60 * 1)``
+                                    would set a limit of 300 requests every 15 minutes.
+                                    Defaults to the value of ``RATE_LIMIT_POST``.
+
+``RATE_LIMIT_UNAUTH_PATCH``         A tuple expressing the rate limit on PATCH
+                                    requests for unauthenticated users (by client IP).
+                                    The first element of the tuple is the number
+                                    of requests allowed, while the second is the time
+                                    window in seconds. For example ``(300, 60 * 1)``
+                                    would set a limit of 300 requests every 15 minutes.
+                                    Defaults to the value of ``RATE_LIMIT_PATCH``.
+
+``RATE_LIMIT_UNAUTH_DELETE``        A tuple expressing the rate limit on DELETE
+                                    requests for unauthenticated users (by client IP).
+                                    The first element of the tuple is the number
+                                    of requests allowed, while the second is the time
+                                    window in seconds. For example ``(300, 60 * 1)``
+                                    would set a limit of 300 requests every 15 minutes.
+                                    Defaults to the value of ``RATE_LIMIT_DELETE``.
+
 ``DEBUG``                           ``True`` to enable Debug Mode, ``False``
                                     otherwise.
 
